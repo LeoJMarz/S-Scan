@@ -1,0 +1,22 @@
+import json
+from model_call import grade
+
+def grade_shoe(image_bytes):
+    raw_response = grade(image_bytes)
+    data = json.loads(raw_response)
+    return data
+
+
+#TODO: Add more custimazation options for grade parsing and UI
+
+def parse_grade(score):
+    if score <= 2:
+        return 1.0
+    elif score <= 4:
+        return 2.0
+    elif score <= 6:
+        return 3.0
+    elif score <= 8:
+        return 4.0
+    else:
+        return 5.0
