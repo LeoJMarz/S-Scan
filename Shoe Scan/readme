@@ -11,5 +11,8 @@
     ```env
     GOOGLE_API_KEY=your_api_key_here
     ```
+## Run
+
+1. bash streamlit run frontend.py 
 
 
