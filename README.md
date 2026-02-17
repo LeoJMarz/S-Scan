@@ -13,5 +13,7 @@
     ```
 ## Run
 
-1. bash streamlit run frontend.py 
+1. ```bash
+   streamlit run frontend.py
+   ```
 
