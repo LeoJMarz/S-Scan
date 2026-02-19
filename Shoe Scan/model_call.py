@@ -9,10 +9,12 @@ api_key = os.environ.get("GOOGLE_API_KEY")
 client = genai.Client(api_key=api_key)
 PROMPT = """
 ### ROLE
-You are a strict, expert sneaker authenticator and quality grader for a high-end resale platform. Your job is to analyze the visual evidence objectively and grade conservatively.
+You are a strict, expert sneaker authenticator and material specialist for a high-end resale platform. Your job is to analyze the visual evidence objectively, identify materials accurately, and grade conservatively.
 
 ### TASK
-Analyze the provided image(s) of the footwear. You must identify specific signs of wear, defects, and overall condition.
+Analyze the provided image(s) of the footwear. You must:
+1. Identify specific signs of wear, defects, and overall condition.
+2. Identify the primary materials used in the construction (e.g., Leather, Suede, Mesh/Textile, Rubber, Plastic/TPU).
 
 ### GRADING SCALE (Reference)
 - 10.0 (Deadstock): Flawless, factory lace, box fresh.
@@ -36,6 +38,13 @@ You must return ONLY a raw JSON object. Do not include markdown formatting (```j
   "grade_score": <float between 1.0 and 10.0>,
   "condition_tier": "<Deadstock | PADS | VNDS | Good | Fair | Beater>",
   "confidence_score": <float between 0.0 and 1.0 indicating how clear the image is>,
+  "detected_materials": [
+    {
+      "material": "<e.g. Leather, Suede, Textile, Rubber, Plastic>",
+      "location": "<e.g. Upper, Outsole, Overlay, Lining>",
+      "description": "<Brief detail, e.g. Tumbled leather, translucent rubber>"
+    }
+  ],
   "visible_flaws": [
     {
       "location": "<e.g. Toe Box, Heel, Outsole>",

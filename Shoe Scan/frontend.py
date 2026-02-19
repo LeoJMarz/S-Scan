@@ -103,7 +103,7 @@ if images_to_process:
                 st.write(f"**Confidence Score:** {int(data['confidence_score'] * 100)}%")
                 st.progress(data['confidence_score'])
 
-                tab1, tab2 = st.tabs(["⚠️ Detected Flaws", "🛠️ Restoration Plan"])
+                tab1, tab2, tab3 = st.tabs(["⚠️ Detected Flaws", "🧵 Material Analysis", "🛠️ Restoration Plan"])
                 
                 with tab1:
                     if data['visible_flaws']:
@@ -118,6 +118,19 @@ if images_to_process:
                         st.info("No major flaws detected.")
                 
                 with tab2:
+                    materials = data.get('detected_materials', [])
+                    if materials:
+                        for mat in materials:
+                            st.markdown(f"""
+                                <div class="flaw-card" style="border-left-color: #4caf50;">
+                                    <strong>{mat['material']}</strong> ({mat['location']})<br>
+                                    <small>{mat['description']}</small>
+                                </div>
+                            """, unsafe_allow_html=True)
+                    else:
+                        st.info("No specific materials identified.")
+
+                with tab3:
                     repair_data = data.get('repair_recommendations', [])
                     if repair_data:
                         for repair in repair_data:

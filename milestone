@@ -1,0 +1,35 @@
+
+Benchmark 1 – Cloud-Based Damage Classification System
+Development of a cloud-hosted AI model (AWS or equivalent) capable of:
+Identifying shoe type and brand (where the dataset allows)
+Classifying material type
+Detecting and categorizing damage (oxidation, scuffs, separation, paint wear)
+Performance Requirements:
+≥95% classification consistency
+Deviation limited to ±1 classification band
+Repeatability across 100 identical scans
+Inference time configurable between 1–4 seconds
+
+Benchmark 2 – Cloud-Based Repair Recommendation Engine
+Development of a cloud-based system capable of:
+Generating recommended repair actions
+Producing structured service outputs
+Providing cost estimation logic integration
+Performance Requirements:
+≥95% output consistency across repeated scans
+Structured output format compatible with Company workflow systems
+
+Benchmark 3 – Enclosure & Scan Consistency Integration
+Integration of AI system into Company-designated scan enclosure, ensuring:
+Stable camera input processing
+Consistent lighting normalization
+Repeatable scan conditions
+Functional demonstration must show:
+Consistent outputs across controlled test scans
+Error deviation ≤5% across identical scan trials
+
+Benchmark 4 – Local Deployment & Training System
+Deployment of a locally executable AI model capable of:
+Running without continuous cloud dependency
+Being retrained using Company-provided datasets
+Maintaining ≥95% classification consistency after local deployment

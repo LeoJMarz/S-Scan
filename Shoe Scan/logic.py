@@ -10,13 +10,15 @@ def grade_shoe(image_bytes):
 #TODO: Add more custimazation options for grade parsing and UI
 
 def parse_grade(score):
-    if score <= 2:
+    print(score)
+    if score <= 3:
         return 1.0
-    elif score <= 4:
+    elif score <= 5:
         return 2.0
-    elif score <= 6:
+    elif score <= 7:
         return 3.0
-    elif score <= 8:
+    elif score <= 8.5:
         return 4.0
     else:
         return 5.0
+    
