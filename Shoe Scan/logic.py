@@ -17,8 +17,9 @@ def parse_grade(score):
         return 2.0
     elif score <= 7:
         return 3.0
-    elif score <= 8.5:
+    elif score < 8.5:
         return 4.0
     else:
+        print('!')
         return 5.0
     

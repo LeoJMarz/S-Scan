@@ -4,7 +4,7 @@
 
 1.  **Install dependencies:**
     ```bash
-    pip install google-genai python-dotenv streamlit
+    pip install -r requirements.txt
     ```
 2.  **Configure API Key:**
     Create a `.env` file in the root directory and add your Google Gemini API key:
