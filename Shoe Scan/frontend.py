@@ -2,6 +2,10 @@ import streamlit as st
 import json
 from model_call import grade
 from logic import parse_grade
+from database import init_db, save_scan, get_recent_scans
+
+# Initialize database
+init_db()
 
 st.set_page_config(page_title="Shoe Scan AI", page_icon="👟", layout="centered")
 
@@ -144,6 +148,12 @@ if images_to_process:
                     else:
                         st.info("No restoration steps recommended.")
                 
+                # Save to database
+                try:
+                    save_scan(data, images_to_process)
+                except Exception as db_e:
+                    st.warning(f"Note: Result summary saved, but database error occurred: {db_e}")
+
                 st.markdown("### 📝 Expert Summary")
                 st.info(data['reasoning_summary'])
                 
@@ -154,3 +164,15 @@ if images_to_process:
                 st.exception(e)
 else:
     st.warning("Please upload at least one image to begin.")
+
+# Sidebar for Recent Scans
+with st.sidebar:
+    st.header("🕒 Recent Scans")
+    recent_scans = get_recent_scans(5)
+    if recent_scans:
+        for scan in recent_scans:
+            with st.expander(f"{scan['timestamp']} - {scan['shoe_brand']}"):
+                st.write(f"**Score:** {parse_grade(scan['grade_score'])}/5.0")
+                st.write(f"**Tier:** {scan['condition_tier']}")
+    else:
+        st.info("No history yet.")
