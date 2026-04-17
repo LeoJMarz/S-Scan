@@ -5,7 +5,7 @@ import mimetypes
 from model_call import grade
 from logic import parse_grade
 from database import init_db, save_scan, get_recent_scans
-
+from cameraControl import capture_image
 # Initialize database
 init_db()
 
@@ -91,6 +91,10 @@ elif scan_mode == "Multi-Angle Scan (4 Views)":
             })
 else:
     st.info("📂 Loading 4 internal images from predefined folders...")
+    capture_image(0, "imgs/top/top.jpg")
+    capture_image(2, "imgs/bottom/bottom.jpg")
+    capture_image(4, "imgs/left/left.jpg")
+    capture_image(6, "imgs/right/right.jpg")
     internal_dirs = ["top", "bottom", "left", "right"]
     all_found = True
     
